@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    container_name: service
+    build: ./
+    ports:
+      - '8080:8080'
+    restart: always
+    depends_on:
+      - db
+  db:
+    image: postgres:13.1
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Acaba1234!**
+      - APP_DB_USER=admin
+      - APP_DB_PASS=Acaba1234!**
+      - APP_DB_NAME=todo
+    ports:
+      - 5433:5432
